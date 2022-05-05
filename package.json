@@ -1,0 +1,12 @@
+{
+  "name": "joi-persion-validators",
+  "version": "1.0.0",
+  "description": "A set of persion validations built for Joi object validator.",
+  "main": "index.js",
+  "repository": "https://github.com/hesan-aminiloo/joi-persion-validators.git",
+  "author": "Hesan Aminiloo <hesan.aminiloo@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "joi": "^17.6.0"
+  }
+}
