@@ -24,7 +24,7 @@ const pJoi = joi.extend(...persianJoi);
 
 // Then create your custom schema
 const schema = custom.object({
-  mobile: pJoi.phone(),
+  mobile: pJoi.mobile(),
   id: pJoi.idNumber()
 });
 ```
