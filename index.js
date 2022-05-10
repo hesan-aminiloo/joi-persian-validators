@@ -1,20 +1,18 @@
 const joi = require('joi');
 const extensions = require('./lib');
 
-// const phoneNumber = '09123334333';
-const phoneNumber = '۰۹33۷۷۸۸56۴';
-// const id = '0013681354';
+const phoneNumber = '00337778899';
 const id = '۰۰۱۳۶۸۱۳۵۴';
 
-const custom = joi.extend(...extensions);
+const pJoi = joi.extend(...extensions);
 
-const schema = custom.object({
-  phone: custom.phone().with({ operator: true }).required().messages({
-    'phoneMsg.irancell': 'شماره ای که وارد کردید باید ایرانسل باشد',
-    'phoneMsg.characters': 'طول اعداد وارد شده باید دقیقا ۱۱ تا باشه',
+const schema = pJoi.object({
+  phone: pJoi.mobile().messages({
+    'mobile.base': 'شماره ای که وارد کردید اشتباه است',
+    'mobile.irancell': 'شماره ای که وارد کردید باید ایرانسل باشد',
+    'mobile.characters': 'طول اعداد وارد شده باید دقیقا ۱۱ تا باشه',
   }),
-  id: custom.persianIdNumber(),
+  id: pJoi.idNumber(),
 })
 
-const a = schema.validate({ phone: phoneNumber, id });
-console.log(a)
+const { value, error } = schema.validate({ phone: phoneNumber, id });
