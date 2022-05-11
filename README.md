@@ -6,17 +6,18 @@ A set of persion validations built on top of Joi object validator. This idea cam
 ## ⚓️ Installation
 Install the package using yarn or npm
 ```js
-npm i joi-persian-validators
+npm i joi joi-persian-validators
 
 // or
 
-yarn add joi-persian-validators
+yarn add joi joi-persian-validators
 ```
 
 ## 📜 How to use it
 This library is a set of extenstions of top of Joi validator, thus you can use it with react-hook-forms or formik. Feel free to take a look at examples.
 Using this lib is fairly simple, first you need to import the lib;
 ```js
+import joi from 'joi';
 import persianJoi from 'joi-persian-validators';
 ```
 then you have to add persian extenstions to your joi instance.
@@ -28,6 +29,15 @@ const pJoi = joi.extend(...persianJoi);
 const schema = pJoi.object({
   mobile: pJoi.mobile(),
   id: pJoi.idNumber()
+});
+
+// commonjs
+const Joi = require('joi').extend(...require('joi-persian-validators'));
+
+// Then create your custom schema
+const schema = Joi.object({
+  mobile: Joi.mobile(),
+  id: Joi.idNumber()
 });
 ```
 
@@ -65,7 +75,7 @@ const { value } = schema.validate({ phone: phoneNumber, id: testId });
 ## 💬 Displaying custom messages
 ```js
 const schema = pJoi.object({
-  phone: pJoi.mobile().with({ operator: true }).messages({
+  phone: pJoi.mobile().messages({
     'mobile.base': 'شماره ای که وارد کردید اشتباه است',
     'mobile.irancell': 'شماره ای که وارد کردید حتما باید ایرانسل باشد',
     'mobile.characters': 'طول شماره وارد شده باید دقیقا ۱۱ باشد',
@@ -82,7 +92,7 @@ const id = '۴۳۱۱۰۲۰۴۶۵';
 const { value } = schema.validate({ phone: phoneNumber, id });
 
 // value = 
-// { phone: { value: '09337788564', op: 'irancell' }, id: '4311020465' }
+// { phone: '09332221122', id: '4311020465' }
 
 /*
   Invalid Data
