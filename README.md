@@ -1,5 +1,7 @@
-# joi-persion-validators
-A set of persion validations built on top of Joi object validator.
+# Joi Persian Validators
+A set of persion validations built on top of Joi object validator. This idea came to my mind when I had to rewrite the same validator over and over again. Feel free to open an issue to ask for more validation rules.
+
+[Demo](https://codesandbox.io/s/react-hook-form-validationresolver-forked-6o94kj?file=/src/App.js)
 
 ## ⚓️ Installation
 Install the package using yarn or npm
@@ -23,13 +25,14 @@ then you have to add persian extenstions to your joi instance.
 const pJoi = joi.extend(...persianJoi);
 
 // Then create your custom schema
-const schema = custom.object({
+const schema = pJoi.object({
   mobile: pJoi.mobile(),
   id: pJoi.idNumber()
 });
 ```
 
 #### Example
+To see how it works with `react-hook-forms` see this [Example](./examples/hook-forms.js)
 ```js
 import joi from 'joi';
 import extensions from 'joi-persian-validators';
