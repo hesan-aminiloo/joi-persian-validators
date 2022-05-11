@@ -1,6 +1,6 @@
 {
   "name": "joi-persian-validators",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A set of persian validations built for Joi object validator.",
   "main": "lib/index.js",
   "repository": "https://github.com/hesan-aminiloo/joi-persian-validators.git",
